@@ -1,0 +1,10 @@
+reset;
+
+model tellers.mod;
+data simple_params.dat;
+data parameters.dat;
+
+options solver cplex;
+solve;
+
+display c;

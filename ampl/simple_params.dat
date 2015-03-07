@@ -1,0 +1,2 @@
+param alpha := 7000;
+param beta := 0.02;
