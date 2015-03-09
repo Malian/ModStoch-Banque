@@ -11,6 +11,7 @@
 \graphicspath{{images/}}
 
 \usepackage{siunitx}
+\usepackage{eurosym}
 
 \usepackage{amsthm}
 \usepackage{amsmath}
@@ -104,5 +105,29 @@
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Optimum number of servers}
+\begin{block}{What is our cost?}
+\begin{itemize}
+\item
+\begin{eqnarray*}
+\min_c & & \alpha c + \beta \int_D A(t)-S(t)\\
+\end{eqnarray*}
+where $D = \{t | A(t)>=S(t) \}$
+\item The number of tellers must be an integer $\rightarrow$ additional constraint : $N_t = c \cdot \mu$ must be integer
+\end{itemize}
+\end{block}
 
+\begin{table}
+\input{../report/tex_matlab/table_param.tex}
+\caption{Parameters\label{table:param}}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results : who gets fired?}
+
+
+
+\end{frame}
 \end{document}
