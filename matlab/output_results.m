@@ -21,3 +21,8 @@ for i = 1:length(served_files)
 	outputfig = strcat(images_dir,carac_str, 'clients_served.eps');
 	print(i,outputfig, '-depsc');
 end
+
+c = csvread(strcat(data_dir,'half_day_opt_capacity.csv'));
+fid = fopen('../report/c_value.tex','w');
+fprintf(fid,'$ %g $',c(1,1));
+fclose(fid);

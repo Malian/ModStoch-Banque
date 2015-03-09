@@ -6,10 +6,15 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
 
 \usepackage{eurosym}% euros
 \usepackage{listings} % code
+% Images
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage[outdir=images/]{epstopdf}
+\usepackage{subfigure}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.eps}
 
 \usepackage{todonotes}
 \title{LINMA 2470 : Stochastic models}
@@ -33,15 +38,14 @@ A more sophisticated approach would include time-varying arrival rate.
 \section*{The merge project}
  Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
 
-But how many tellers do we need? Since in each bank a teller is idle at some time, how many of them is needed to make sure that the queue doesn't grow too much?
+The question that now arises is how many tellers do we really need? Since in each bank a teller is idle at some time, how many of them are needed to make sure that the clients don't wait too much.
 
-\todo[inline]{explain quasi-steady state approx}
 
-In order to estimate the number of tellers necessary for the merged bank, we perform a quasi-steady state approximation of the system.
+In order to estimate the number of tellers necessary for the merged bank, we perform a quasi-steady state approximation of the system. \todo[inline]{explain quasi-steady state approx}
 
 We suppose that the number of tellers is constant throughout the half day considered.
 We are trying to minimize a weighted function of the capacity and the total waiting time of the clients.
-We consider that the cost of the capacity is proportional to $ \alpha$ (\euro s/customers), and the value of the waiting time of the clients is proportional to $\beta$ (\euro/$s^2$)
+We consider that the cost of the capacity is proportional to $ \alpha$ (\euro s/customers), and the value of the waiting time of the clients is proportional to $\beta$ (\euro/$s^2$).
 
 Hence, we simply solve the following program :
 
@@ -55,6 +59,18 @@ The average processing time is denoted by $\mu$.
 The parameter $\alpha$ is given by $\alpha = \frac{S}{\mu}$
 If we say that the time of a customer is worth as much as the time of our employee, then we would have $\beta = \frac{S}{tt}$ where $tt$ is the total number of seconds in a half day.\\
 An example of parameters is given in table \ref{table:param}.
+\begin{table}
+\input{tex_matlab/table_param.tex}
+\caption{Parameters\label{table:param}}
+\end{table}
 
+Our optimisation problem gives us a value of \input{c_value.tex} which optimizes the capacity in customers per second.\\
+It gives us the optimal number of tellers : $N_t = c \mu$
+We can see on figure \ref{fig:clients_lun} the evolution of the clients arrived and the clients served during the afternoon of monday. We can see that at some point the serving rate of the clients cannot follow the arrival rate of the clients. From this point a queue starts growing until the arrival rate lowers and the queue is nearly empty again.
+\begin{figure}[h]
+\centering
+\includegraphics[width = 8cm]{half_day_test_clients_served.eps}
+\caption{Cumulative amount of clients arrived and served\label{fig:clients_lun}}
+\end{figure}
 
 \end{document}
