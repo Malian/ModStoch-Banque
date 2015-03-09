@@ -1,10 +1,26 @@
 reset;
 
+# Output directory
+param outputDir symbolic;
+param output symbolic;
+let outputDir := "../results/";
+let output := "half_day";
+
+# Options and solver
+option solver cplex;
+option display_precision 12;
+option csvdisplay_header 0;
+
+# Model and data
 model tellers.mod;
 data simple_params.dat;
 data parameters.dat;
 
-options solver cplex;
 solve;
 
+print("Optimal capacity in customers/s \n");
 display c;
+
+
+csvdisplay {i in ind} s[i] > (outputDir & output & "_test" & "_clients_served" & ".csv");
+csvdisplay c > (outputDir & output & "_opt_capacity.csv");

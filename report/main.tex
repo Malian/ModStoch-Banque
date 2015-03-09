@@ -34,7 +34,27 @@ A more sophisticated approach would include time-varying arrival rate.
  Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
 
 But how many tellers do we need? Since in each bank a teller is idle at some time, how many of them is needed to make sure that the queue doesn't grow too much?
-\todo[inline]{answer + validation with anylogic}
+
+\todo[inline]{explain quasi-steady state approx}
+
+In order to estimate the number of tellers necessary for the merged bank, we perform a quasi-steady state approximation of the system.
+
+We suppose that the number of tellers is constant throughout the half day considered.
+We are trying to minimize a weighted function of the capacity and the total waiting time of the clients.
+We consider that the cost of the capacity is proportional to $ \alpha$ (\euro s/customers), and the value of the waiting time of the clients is proportional to $\beta$ (\euro/$s^2$)
+
+Hence, we simply solve the following program :
+
+\begin{eqnarray*}
+\min_c & & \alpha c + \beta \int_D A(t)-S(t)\\
+\end{eqnarray*}
+where $D = \{t | A(t)>=S(t) \}$
+
+So let's now estimate the parameters. Let's say that we pay a teller $S = 75$\euro a day, taxes included.
+The average processing time is denoted by $\mu$. 
+The parameter $\alpha$ is given by $\alpha = \frac{S}{\mu}$
+If we say that the time of a customer is worth as much as the time of our employee, then we would have $\beta = \frac{S}{tt}$ where $tt$ is the total number of seconds in a half day.\\
+An example of parameters is given in table \ref{table:param}.
 
 
 \end{document}
