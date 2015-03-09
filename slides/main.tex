@@ -8,7 +8,9 @@
 \usepackage{layout}
 \usepackage{epsfig}
 \usepackage{graphicx}
-\graphicspath{{images/}}
+\graphicspath{{../report/images/}}
+\usepackage{subfigure}
+
 
 \usepackage{siunitx}
 \usepackage{eurosym}
@@ -100,16 +102,10 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Fluid approximation}
-
-
-\end{frame}
-
-\begin{frame}
 \frametitle{Optimum number of servers}
 \begin{block}{What is our cost?}
 \begin{itemize}
-\item
+\item Proportional to the capacity we can handle and the waiting time of the clients
 \begin{eqnarray*}
 \min_c & & \alpha c + \beta \int_D A(t)-S(t)\\
 \end{eqnarray*}
@@ -117,17 +113,26 @@ where $D = \{t | A(t)>=S(t) \}$
 \item The number of tellers must be an integer $\rightarrow$ additional constraint : $N_t = c \cdot \mu$ must be integer
 \end{itemize}
 \end{block}
-
-\begin{table}
+\begin{figure}
+\centering
 \input{../report/tex_matlab/table_param.tex}
 \caption{Parameters\label{table:param}}
-\end{table}
+\end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Results : who gets fired?}
-
-
-
+\begin{figure}
+\centering
+\subfigure[lundi pm]{
+\includegraphics[width = 5cm]{half\string_daylundi\string_pm\string_clients\string_served.eps}
+}
+\subfigure[vendredi am]{
+\includegraphics[width = 5cm]{half\string_dayvendredi\string_am\string_clients\string_served.eps}
+}
+\end{figure}
+\begin{center}
+$N_t = $ \input{../report/tex_matlab/tellers.tex}
+\end{center}
 \end{frame}
 \end{document}

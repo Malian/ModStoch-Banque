@@ -13,14 +13,15 @@ option csvdisplay_header 0;
 
 # Model and data
 model tellers.mod;
-data simple_params.dat;
+data coeff.dat;
 data parameters.dat;
 
 solve;
 
-print("Optimal capacity in customers/s \n");
+printf("\n Optimal capacity in customers/s \n");
 display c;
 
-
-csvdisplay {i in ind} s[i] > (outputDir & output & "_test" & "_clients_served" & ".csv");
+for {hd in half_days}{
+	csvdisplay {i in ind} s[hd,i] > (outputDir & output & hd & "_clients_served" & ".csv");
+}
 csvdisplay c > (outputDir & output & "_opt_capacity.csv");

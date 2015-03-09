@@ -54,23 +54,39 @@ Hence, we simply solve the following program :
 \end{eqnarray*}
 where $D = \{t | A(t)>=S(t) \}$
 
-So let's now estimate the parameters. Let's say that we pay a teller $S = 75$\euro a day, taxes included.
+So let's now estimate the parameters. Let's say that we pay a teller $S = 75$\euro  a half day, taxes included.
 The average processing time is denoted by $\mu$. 
 The parameter $\alpha$ is given by $\alpha = \frac{S}{\mu}$
-If we say that the time of a customer is worth as much as the time of our employee, then we would have $\beta = \frac{S}{tt}$ where $tt$ is the total number of seconds in a half day.\\
-An example of parameters is given in table \ref{table:param}.
+The value of $\beta$ and the other parameters is given in table \ref{table:param}.
 \begin{table}
 \input{tex_matlab/table_param.tex}
 \caption{Parameters\label{table:param}}
 \end{table}
 
-Our optimisation problem gives us a value of \input{c_value.tex} for $c$, which optimizes the capacity in customers per second.\\
+Our optimisation problem gives us a value of \input{tex_matlab/c_value.tex} for $c$, which optimizes the capacity in customers per second.\\
 It gives us the optimal number of tellers : $N_t = c \mu$
-We can see on figure \ref{fig:clients_lun} the evolution of the clients arrived and the clients served during the afternoon of monday. We can see that at some point the serving rate of the clients cannot follow the arrival rate of the clients. From this point a queue starts growing until the arrival rate lowers and the queue is nearly empty again.
+We can see on figure \ref{fig:clients_lun} the approximation of the number of clients arrived in blue and the clients served during the afternoon of monday. We can see that at some point the serving rate of the clients cannot follow the arrival rate of the clients. \\
+For the aforementioned parameter values, we get a value of \input{tex_matlab/tellers.tex}. Of course, it depends on how we value the time of our employers and our customers.
 \begin{figure}[h]
 \centering
-\includegraphics[width = 8cm]{half_day_test_clients_served.eps}
+\subfigure[lundi pm]{
+\includegraphics[width = 6cm]{half\string_daylundi\string_pm\string_clients\string_served.eps}
+}
+\subfigure[mardi pm]{
+\includegraphics[width = 6cm]{half\string_daymardi\string_pm\string_clients\string_served.eps}
+}
+\subfigure[mercredi am]{
+\includegraphics[width = 6cm]{half\string_daymercredi\string_am\string_clients\string_served.eps}
+}
+\subfigure[mercredi pm]{
+\includegraphics[width = 6cm]{half\string_daymercredi\string_pm\string_clients\string_served.eps}
+}
+\subfigure[vendredi am]{
+\includegraphics[width = 6cm]{half\string_dayvendredi\string_am\string_clients\string_served.eps}
+}
 \caption{Cumulative amount of clients arrived and served\label{fig:clients_lun}}
 \end{figure}
+
+
 
 \end{document}

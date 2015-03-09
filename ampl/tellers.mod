@@ -2,23 +2,25 @@ param alpha;
 param beta;
 
 set ind ordered ;
+set half_days;
+set HD_AND_IND within {half_days,ind};
 param time{ind};
-param CA{ind}; # Cumulative arrivals
+param CA{half_days,ind}; # Cumulative arrivals
 
-var s{t in ind}>=0;
-var x{t in ind : t < last(ind)}>=0;
+var s{hd in half_days,t in ind}>=0;
+var x{hd in half_days,t in ind : t < last(ind)}>=0;
 var c>=0;
-minimize cost : alpha*c + beta * sum{t in ind:t<last(ind)} x[t];
-
+minimize cost : alpha*c*card(half_days) + beta * sum{hd in half_days, t in ind:t<last(ind)} x[hd,t];
+# We minimize the sum of the cost over all the half days
 s.t.
 
-belowCurve{t in ind : t < last(ind)} :
-s[t] <= CA[t];
+belowCurve{hd in half_days, t in ind : t < last(ind)} :
+s[hd,t] <= CA[hd,t];
 
-RampUp{t in ind: t < last(ind)} :
-s[t+1]-s[t] <= c *(time[t+1]-time[t]);
+RampUp{hd in half_days, t in ind: t < last(ind)} :
+s[hd,t+1]-s[hd,t] <= c *(time[t+1]-time[t]);
 
-trapeze{t in ind:t<last(ind)}:
-x[t]>= (CA[t]-s[t] + CA[next(t)] - s[next(t)])/2;
+trapeze{hd in half_days, t in ind:t<last(ind)}:
+x[hd,t]>= (CA[hd,t]-s[hd,t] + CA[hd,next(t)] - s[hd,next(t)])/2;
 
 end;
