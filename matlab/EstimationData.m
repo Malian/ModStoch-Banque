@@ -72,3 +72,6 @@ createPlot(h, x, y);
 g = createFigure('Histogramme des temps au gichet', '$t(s)$', 'nombre de personnes');
 hist(realTimesAll, 75);
 
+l = createFigure('Histogramme des temps au gichet', '$t(s)$', 'nombre de personnes');
+histfit(realTimesAll, 100, 'lognormal')
+
