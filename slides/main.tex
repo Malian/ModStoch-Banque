@@ -1,0 +1,108 @@
+\documentclass[10pt]{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{layout}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{siunitx}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{pgfplots}
+
+\usepackage[version=3]{mhchem}
+
+\usepackage{wasysym}
+%Bibtex
+%\usepackage[square]{natbib}
+%\newcommand{\newblock}{}
+
+\usetheme{Warsaw}
+\setbeamertemplate{headline}{}
+
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+
+\usepackage{todonotes}
+\title{Bank queue optimization}
+\author{
+  Malian De Ron
+  \and
+  Florentin Goyens
+  \and
+  Quentin Laurent
+  \and
+  Harold Taeter
+}
+
+\usepackage{tikz}
+\tikzstyle{vertex}=[circle,fill=gray!50,minimum size=15pt,inner sep=0pt]
+\tikzstyle{visited}=[circle,fill=green!25,minimum size=15pt,inner sep=0pt]
+\tikzstyle{unvisited}=[circle,fill=blue!25,minimum size=15pt,inner sep=0pt]
+
+
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}
+  \frametitle{Model}
+  \begin{block}{$M/G/2$ model}
+  \begin{itemize}
+    \item Time between two arrivals follows an exponential law
+    \item 2 tellers
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Parameters estimation}
+ 
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Anylogic model}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{The merge project}
+  \begin{block}{Modification of the model}
+  \begin{itemize}
+  \item  Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
+  \item Processing time follows the same distribution as before
+  \end{itemize}
+  \end{block}
+  
+  \begin{block}{Estimating the number of tellers needed}
+  Fluid approximation
+  \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fluid approximation}
+
+
+\end{frame}
+
+
+\end{document}
