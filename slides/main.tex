@@ -92,14 +92,29 @@
   \frametitle{The merge project}
   \begin{block}{Modification of the model}
   \begin{itemize}
-  \item  Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
+  \item  Clients arriving in the merged branches = sum of the two merged branches
+  $\rightarrow $ new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
   \item Processing time follows the same distribution as before
   \end{itemize}
   \end{block}
-  
-  \begin{block}{Estimating the number of tellers needed}
-  Fluid approximation
-  \end{block}
+ 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fluid approximation}
+\begin{block}{Deterministic model}
+\begin{itemize}
+\item Instead of discrete arrivals, continuous arrivals with a rate $\lambda(t)$
+\item $A(t) = \int_0^t \lambda(t)$ is the cumulative number of arrivals
+\item $\omega (t) \leq c = N_t \cdot \frac{1}{\mu}$ is the departure rate of the queue, where $c$ is the maximum rate, $N_t$ the number of tellers and $\mu$ the mean processing time of a customer by a teller.
+\item $S(t) = \int_0^t \omega(t)$ is the cumulative number of departures from the queue.
+\end{itemize}
+\end{block}
+\begin{figure}
+\centering
+\includegraphics[width = 6cm]{fluid_approx.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}
