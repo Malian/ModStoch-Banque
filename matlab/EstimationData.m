@@ -55,12 +55,12 @@ fprintf('-----------------------------------------------------------------------
 [params intervalle] = lognfit(realTimesAll);
 fprintf('mu (normal) : \t \t %g\n', params(1));
 fprintf('sigma (normal) : \t %g \n', params(2));
-fprintf('mu (log-normal) : \t %g\n', exp(params(1))+params(2)^2/2);
+fprintf('mu (log-normal) : \t %g\n', exp(params(1)+params(2)^2/2));
 fprintf('sigma (log-normal) : \t %g \n', sqrt((exp(params(2)^2)-1)*exp(2*params(1)+params(2)^2)));
 fprintf('\n');
 
 lIntervalle = intervalle(2, :) - intervalle(1, :);
-lMuIntervalle = exp(lIntervalle(1))+lIntervalle(2)^2/2;
+lMuIntervalle = exp(lIntervalle(1)+lIntervalle(2)^2/2);
 lSigmaIntervalle = sqrt((exp(lIntervalle(2)^2)-1)*exp(2*lIntervalle(1)+lIntervalle(2)^2));
 
 %% plot
