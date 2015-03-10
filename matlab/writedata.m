@@ -12,7 +12,7 @@ tt = 3*60*60;
 
 half_day_names = {'lundi_pm' 'mardi_pm' 'mercredi_am' 'mercredi_pm' 'vendredi_am'};
 nHalfDays = 5;
-lambda = csvread(strcat(matlab_data_dir,'lambdas.csv'));
+lambda = 2*csvread(strcat(matlab_data_dir,'lambdas.csv')); % *2 because we merge the two banks
 duration = ones(5,3)*3600;
 mean_processing_time = 173;
 
