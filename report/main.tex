@@ -37,10 +37,46 @@
 We are going to model our bank as a $M/G/2$ queue. Hence the arrival times will follow an exponential law, and the distribution of service time is any distribution where times are positive.
 \todo[inline]{Comment traiter le fait qu'un teller est parfois inactif?}
 \section*{Parameters estimation}
-In order to determine the arrival rate $\lambda (hr^{-1})$ of the clients in the bank we need to analyse the provided data.\\
-If we assume that the number of people in the line at the end of the half-day is zero, then the number of people who arrived is equal to the number of people who were served by either one of the two tellers.\\
-A more sophisticated approach would include time-varying arrival rate.
-\todo[inline]{Traiter les données et montrer pourquoi c'est le meilleur estimateur}
+In order to determine the arrival rate $\lambda$ expressed in $[\frac{1}{s}]$ of the clients in the bank we need to analyse the provided data.
+
+
+Let $T_{1} \sim Exp(\lambda)$ be the time between the opening of the bank and the arrival of the first client. We then have $T_{2} \sim Exp(\lambda)$ the time between the arrival of the first two clients and so on. The mean of this law is $\frac{1}{\lambda}$. 
+
+ It is easy to convince ourselves that, in the case of our bank, $\lambda$ is a function of time during the day. This allows us to account for rush hours during the day. We first modelized $\lambda$ as a piecewise constant function with three different values during half a day. We will also make a distinction between the morning and the afternoon. We will end up with $6$ values for $\lambda$.
+ 
+ 
+During a period where it is constant, one can approach $\frac{1}{\lambda}$, the  average time between arrivals as
+$$\frac{1}{\lambda}\approx \frac{\sum \text{time between two consecutive arrivals} }{ \text{number of clients arrived}}.$$  
+
+This is similar to using the sample mean estimator for the mean. This is also the maximum likelihood estimator.
+
+If the time period and the number of incomming clients are large enough, we assume reasonable to approach this as
+$$\frac{1}{\lambda}\approx \frac{ \text{Time elapsed} }{ \text{number of clients served}}.$$
+
+We have $6$ categories. The value of $\lambda$ for a category is the ration of the clients served during that period over $3600$ seconds, since each range lasts one hour.
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+$\lambda$ & 9-10h/13-14h & 10-11h/14-15h & 11-12h/15-16h \\ 
+\hline 
+am & 0.004444 & 0.0063889 & 0.0056944 \\ 
+\hline 
+pm & 0.0074734 & 0.0084259 & 0.0083333 \\ 
+\hline 
+\end{tabular}
+\caption{Values of the arrival rate $\lambda$.} 
+\end{table}
+
+As for the time spend at a desk, we plotted the data of the time spend and tried to guess the distribution. We assumed that this service time is independent of the day of the week and wheter we are in the morning or afternoon. So we gathered all service times available. The histogram can be seen in blue on figure~\ref{lognormal}. We have found that the law follows a lognormal distribution with the following associated parameters for the normal distibution: $\mu= 5.063$ and $\sigma= 0.777$. More precisly, we have shown that the parameters lie respectivly in the $95 \% $ confidence intervals: $\mu \in [ 4.984 , 5.141 ]$ and $\sigma \in [ 0.725 , 0.837]$. Getting back to the mean of the lognormal, she lies in a $1.2$ seconds length interval. This is a small interval compared to the value of the mean: $ 213.7$. We conclude that the choosed lognormal distibution is a good modelization of the service time at a desk.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width = 0.9\textwidth]{./hist_lognormal.eps}
+\caption{Lognormal distibution for time spend at a desk.}
+\label{lognormal}
+\end{figure}
 
 
 \section*{Anylogic model}
