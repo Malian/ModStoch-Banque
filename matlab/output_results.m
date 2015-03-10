@@ -21,7 +21,8 @@ for i = 1:length(served_files)
     
 	carac_str = strsplit(served_files_name,'clients_served.csv');
 	carac_str = carac_str(1,1){1};
-	title(carac_str);
+	
+    pause(1);
 	outputfig = strcat(images_dir,carac_str, 'clients_served.eps');
 	print(i,outputfig, '-depsc');
 end
