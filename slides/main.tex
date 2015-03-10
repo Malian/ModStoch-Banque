@@ -64,12 +64,51 @@
   \frametitle{Model}
   \begin{block}{$M/G/2$ model}
   \begin{itemize}
-    \item Time between two arrivals follows an exponential law
+    \item Arrivals of client follows a Poisson process
     \item 2 tellers
     \end{itemize}
   \end{block}
 \end{frame}
 
+  \frametitle{Parameters estimation}
+ 
+ \begin{itemize}
+ \item Time varying rate of arrival $\lambda$ for the Poisson process. 
+ \item $\lambda$ is assumed piecewise constant, 6 values over one day.  
+\item Approximation: 
+\[\frac{1}{\lambda}\approx \frac{ \text{Time elapsed} }{ \text{number of clients served}}\]  
+ \end{itemize}  
+  
+  
+  \begin{frame}
+	\frametitle{Parameters estimation}
+
+\begin{figure}
+\centering
+\includegraphics[width = \textwidth]{../report/images/lambdaApprox.eps}
+\caption{Piecewise linear approximation of clients arrivals}
+\end{figure}
+
+\end{frame}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Parameters estimation }
+ 
+ \begin{itemize} 
+  \item Service time at a desk 
+  follows a lognormal distibution.
+  \item Mean $=213.7[s]$ and standart deviation $=194.6[s]$ 
+ \end{itemize} 
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width = 0.9\textwidth]{./hist_lognormal.eps}
+  \end{figure}  
+  
+  
+  
+\end{frame}
 
 \begin{frame}
 	\frametitle{Parameters estimation}
