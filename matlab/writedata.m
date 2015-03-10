@@ -45,6 +45,7 @@ for hd = 1:nHalfDays
 	plot(time,CA(hd,:),'linewidth',2);hold on;
 end
 legend('1','2','3','4','5');
+print('../report/images/lambdaApprox.eps','-depsc');
 
 %% Produce files
 % Write data in ampl readable format

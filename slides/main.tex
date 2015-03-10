@@ -6,9 +6,10 @@
 \usepackage{lmodern}
 
 \usepackage{layout}
-\usepackage{epsfig}
+%\usepackage{epsfig}
 \usepackage{graphicx}
 \graphicspath{{../report/images/}}
+\usepackage[outdir=../report/images/]{epstopdf}
 \usepackage{subfigure}
 
 
@@ -53,13 +54,6 @@
   Harold Taeter
 }
 
-\usepackage{tikz}
-\tikzstyle{vertex}=[circle,fill=gray!50,minimum size=15pt,inner sep=0pt]
-\tikzstyle{visited}=[circle,fill=green!25,minimum size=15pt,inner sep=0pt]
-\tikzstyle{unvisited}=[circle,fill=blue!25,minimum size=15pt,inner sep=0pt]
-
-
-
 \begin{document}
 
 \begin{frame}
@@ -78,13 +72,18 @@
 
 
 \begin{frame}
-  \frametitle{Parameters estimation}
- 
-  
+	\frametitle{Parameters estimation}
+
+\begin{figure}
+\centering
+\includegraphics[width = 0.7\textwidth]{../report/images/lambdaApprox.eps}
+\caption{Piecewise linear approximation of clients arrivals}
+\end{figure}
+
 \end{frame}
 
 \begin{frame}
-  \frametitle{Anylogic model}
+  \frametitle{Anylogic model : non-merged}
   \begin{figure}
   \centering
 \subfigure[Waiting time]{
@@ -96,10 +95,22 @@
 
 \caption{Non-merged bank with 2 tellers}
   \end{figure}
+  
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mu$ & $t_{max}$ \\
+\hline
+171.54 & 924.2 \\
+\hline
+\end{tabular} 
+\end{table}
+
 \end{frame}
 
 \begin{frame}
-  \frametitle{Anylogic model II}
+  \frametitle{Anylogic model II : Merged bank}
   \begin{figure}
   \centering
 \subfigure[Waiting time]{
@@ -110,23 +121,80 @@
 }
 
 \caption{Merged bank with 4 tellers}
-  \end{figure}
+\end{figure}
+  
+  
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mu$ & $t_{max}$ \\
+\hline
+62.7 & 451.5 \\
+\hline
+\end{tabular} 
+\end{table}
+
 \end{frame}
 
+
 \begin{frame}
-  \frametitle{Anylogic model III}
-  \begin{figure}
-  \centering
+  \frametitle{Anylogic model III : Merged bank}
+\begin{figure}
+\centering
 \subfigure[Waiting time]{
 \includegraphics[width = 0.48\textwidth]{M3telQ.jpg}
 }
 \subfigure[Total time in the system]{
 \includegraphics[width = 0.48\textwidth]{M3telTOTAL.jpg}
 }
-
 \caption{Merged bank with 3 tellers}
-  \end{figure}
+\end{figure}
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mu$ & $t_{max}$ \\
+\hline
+62.7 & 451.5 \\
+\hline
+\end{tabular} 
+\end{table}
+
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{Anylogic model II : Merged bank}
+  \begin{figure}
+  \centering
+\subfigure[Waiting time]{
+\includegraphics[width = 0.48\textwidth]{M3-4telQ.jpg}
+}
+\subfigure[Total time in the system]{
+\includegraphics[width = 0.48\textwidth]{M3-4telTOTAL.jpg}
+}
+
+\caption{Merged bank with 3tellers in the morning and 4 tellers in the afternoon}
+\end{figure}
+  
+  
+\begin{table}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mu$ & $t_{max}$ \\
+\hline
+92.6 & 887 \\
+\hline
+\end{tabular} 
+\end{table}
+
+\end{frame}
+
+
+
 
 \begin{frame}
   \frametitle{The merge project}
