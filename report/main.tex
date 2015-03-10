@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{fullpage}
 
 \usepackage{eurosym}% euros
 \usepackage{listings} % code
@@ -19,17 +20,13 @@
 \usepackage{todonotes}
 \title{LINMA 2470 : Stochastic models}
 \author{
-  \small
-  Malian De Ron
+  \small Malian De Ron
+  \and 
+  \small Florentin Goyens
   \and
-   \small  
-  Florentin Goyens
+  \small Quentin Laurent
   \and
-  \small
-  Quentin Laurent
-  \and
-  \small
-  Harold Taeter
+  \small Harold Taeter
 }
 \begin{document}
 \maketitle
@@ -37,29 +34,32 @@
 We are going to model our bank as a $M/G/2$ queue. Hence the arrival times will follow an exponential law, and the distribution of service time is any distribution where times are positive.
 \todo[inline]{Comment traiter le fait qu'un teller est parfois inactif?}
 \section*{Parameters estimation}
-In order to determine the arrival rate $\lambda$ expressed in $[\frac{1}{s}]$ of the clients in the bank we need to analyse the provided data.
+In order to determine the arrival rate $\lambda$ expressed in $[\frac{1}{s}]$ of the clients in the bank we need to analyse the provided data.\\
 
-
-Let $T_{1} \sim Exp(\lambda)$ be the time between the opening of the bank and the arrival of the first client. We then have $T_{2} \sim Exp(\lambda)$ the time between the arrival of the first two clients and so on. The mean of this law is $\frac{1}{\lambda}$. 
-
- It is easy to convince ourselves that, in the case of our bank, $\lambda$ is a function of time during the day. This allows us to account for rush hours during the day. We first modelized $\lambda$ as a piecewise constant function with three different values during half a day. We will also make a distinction between the morning and the afternoon. We will end up with $6$ values for $\lambda$.
+Let $T_{1} \sim Exp(\lambda)$ be the time between the opening of the bank and the arrival of the first client. We then have $T_{2} \sim Exp(\lambda)$ the time between the arrival of the first two clients and so on. The mean of this law is $\frac{1}{\lambda}$.  It is easy to convince ourselves that, in the case of our bank, $\lambda$ is a function of time during the day. This allows us to account for rush hours during the day. We first modelized $\lambda$ as a piecewise constant function with three different values during half a day. We will also make a distinction between the morning and the afternoon. We will end up with $6$ values for $\lambda$.\\
  
  
-During a period where it is constant, one can approach $\frac{1}{\lambda}$, the  average time between arrivals as
-$$\frac{1}{\lambda}\approx \frac{\sum \text{time between two consecutive arrivals} }{ \text{number of clients arrived}}.$$  
+During a period where it is constant, one can approach $\frac{1}{\lambda}$, the  average time between arrivals as\\
+\[
+    \frac{1}{\lambda}\approx \frac{\sum \text{time between two consecutive arrivals} }{ \text{number of clients arrived}}.
+\]
 
-This is similar to using the sample mean estimator for the mean. This is also the maximum likelihood estimator.
+\vspace{0.5cm}
+This is similar to using the sample mean estimator for the mean. This is also the maximum likelihood estimator.\\
 
-If the time period and the number of incomming clients are large enough, we assume reasonable to approach this as
-$$\frac{1}{\lambda}\approx \frac{ \text{Time elapsed} }{ \text{number of clients served}}.$$
+If the time period and the number of incomming clients are large enough, we assume reasonable to approach this as\\
+\[
+    \frac{1}{\lambda}\approx \frac{ \text{Time elapsed} }{ \text{number of clients served}}.
+\]
 
+\newpage
 We have $6$ categories. The value of $\lambda$ for a category is the ration of the clients served during that period over $3600$ seconds, since each range lasts one hour.
 
-\begin{table}
+\begin{table}[!hbt]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline 
-$\lambda$ & 9-10h/13-14h & 10-11h/14-15h & 11-12h/15-16h \\ 
+$\lambda$ $\left[s\right]$ & 9-10h/13-14h & 10-11h/14-15h & 11-12h/15-16h \\ 
 \hline 
 am & 0.004444 & 0.0063889 & 0.0056944 \\ 
 \hline 
@@ -78,12 +78,10 @@ As for the time spend at a desk, we plotted the data of the time spend and tried
 \label{lognormal}
 \end{figure}
 
-
-\section*{Anylogic model}
-
-\todo[inline]{Modèle anylogic}
-
 \section*{The merge project}
+\subsection*{Anylogic modelisation}
+    On a fait des run et c'est ok !
+\subsection*{An optimisation approach}
  Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
 
 The question that now arises is how many tellers do we really need? Since in each bank a teller is idle at some time, how many of them are needed to make sure that the clients don't wait too much.
