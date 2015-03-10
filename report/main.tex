@@ -80,9 +80,85 @@ As for the time spend at a desk, we plotted the data of the time spend and tried
 
 \section*{The merge project}
 \subsection*{Anylogic modelisation}
-    On a fait des run et c'est ok !
+
+The first step was to represent the case of a single bank with two tellers in Anylogic. This is the current situation, before the merging. This scenario is working rather well in our simulations. The average waiting time in the queue is a little under $3$ minutes. 
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+ & Time in the queue & Total time in the bank \\ 
+\hline 
+$\mu$ & 171,54 & 377,86 \\ 
+\hline 
+$T_{min}$ & 0 & 16,07 \\ 
+\hline 
+$T_{max}$ & 924,20 & 1555,74 \\ 
+\hline 
+$\sigma$ & 249,24  & 285,13 \\ 
+\hline 
+\end{tabular} 
+\caption{Waiting time for 2 tellers before the merging. Units: $[s]$}
+\end{table}
+
+We then simulated the flow of client after merging, with the rate of arrival doubled. 
+Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
+
+If we stick to two tellers, the queue becomes very long and happens to reach his maximum capacity fixed at $50$ people. The average waiting time is around half a hour, this is unaffordable.
+
+We tried with 3 and 4 tellers. The results are on table~\ref{any34}. We see that the scenario with 3 tellers is a bit disapointing. The average waiting time is around $9$ minuts in the queue. The maximum waiting time is also very high at almost $40$ minuts. 
+With 4 tellers, it is the opposite and the waiting time is a bit small. We could use fewer tellers. The average waiting time in the queue is only of one minut. Obviously one could define precisely a reasonable waiting time for his clients.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+ \hline 
+  & 3 tellers & 4 tellers \\ 
+ \hline 
+ $\mu$ & 541  & 62 \\ 
+ \hline 
+ $T_{min}$ & 0 & 0 \\ 
+ \hline 
+ $T_{max}$ & 2238 & 451 \\ 
+ \hline 
+ $\sigma$ & 633 & 94 \\ 
+ \hline 
+ \end{tabular}  
+\caption{Waiting time in queue for merged bank in seconds}
+\label{any34}
+\end{table}
+
+
+
+
+Our final recomandation is based on the following obervation: the flot of client is more important in the afternoon. To keep the waiting time stedy through the day  at a value we judge appropriate, we are going to make a final adjustment.
+
+We will use 3 tellers in the morning and 4 in the afternoon. The simulations in anylogic shows great results for this configuration. The caracteristics of the waiting are on table~\ref{any3et4}.
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+ & 3-4 tellers \\
+\hline 
+$\mu$ & 92 \\ 
+\hline 
+$T_{min}$ & 0 \\ 
+\hline 
+$T_{max}$ & 887 \\ 
+\hline 
+$\sigma$ & 147 \\ 
+\hline 
+\end{tabular} 
+\caption{Waiting time in the queue for 3 tellers am and 4 pm. Units: $[s]$}
+\label{any3et4}
+\end{table}
+
 \subsection*{An optimisation approach}
- Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
+
+We now turn to a different approach. With Anylogic we were able to estimate the size of the queue and the waiting time. We will now put a cost on different parameters and try to find a optimal value for a optimisation problem.
+
+ %Since the clients arriving in the two old branches will sum up and go to the merged branch, we simply add the two Poisson processes, which gives us a new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
 
 The question that now arises is how many tellers do we really need? Since in each bank a teller is idle at some time, how many of them are needed to make sure that the clients don't wait too much.
 
