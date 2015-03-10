@@ -70,6 +70,7 @@
   \end{block}
 \end{frame}
 
+  \begin{frame}
   \frametitle{Parameters estimation}
  
  \begin{itemize}
@@ -78,7 +79,7 @@
 \item Approximation: 
 \[\frac{1}{\lambda}\approx \frac{ \text{Time elapsed} }{ \text{number of clients served}}\]  
  \end{itemize}  
-  
+  \end{frame}
   
   \begin{frame}
 	\frametitle{Parameters estimation}
@@ -89,8 +90,6 @@
 \caption{Piecewise linear approximation of clients arrivals}
 \end{figure}
 
-\end{frame}
-  
 \end{frame}
 
 \begin{frame}
@@ -110,16 +109,6 @@
   
 \end{frame}
 
-\begin{frame}
-	\frametitle{Parameters estimation}
-
-\begin{figure}
-\centering
-\includegraphics[width = \textwidth]{../report/images/lambdaApprox.eps}
-\caption{Piecewise linear approximation of clients arrivals}
-\end{figure}
-
-\end{frame}
 
 \begin{frame}
   \frametitle{Anylogic model : non-merged}
@@ -146,6 +135,18 @@ $\mu [min]$ & $t_{max} [min]$ \\
 \end{tabular} 
 \end{table}
 
+\end{frame}
+
+\begin{frame}
+  \frametitle{The merge project}
+  \begin{block}{Modification of the model}
+  \begin{itemize}
+  \item  Clients arriving in the merged branches = sum of the two merged branches
+  $\rightarrow $ new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
+  \item Processing time follows the same distribution as before
+  \end{itemize}
+  \end{block}
+ 
 \end{frame}
 
 \begin{frame}
@@ -235,17 +236,7 @@ $\mu[min]$ & $t_{max}[min]$ \\
 
 
 
-\begin{frame}
-  \frametitle{The merge project}
-  \begin{block}{Modification of the model}
-  \begin{itemize}
-  \item  Clients arriving in the merged branches = sum of the two merged branches
-  $\rightarrow $ new Poisson process with an arrival rate of the clients twice as big as that of the two old branches.
-  \item Processing time follows the same distribution as before
-  \end{itemize}
-  \end{block}
- 
-\end{frame}
+
 
 
 \begin{frame}

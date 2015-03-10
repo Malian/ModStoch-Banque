@@ -38,4 +38,4 @@ end
 
 % Create plot
 figure(fig);
-h = plot(X, Y, '-', 'Color', color, 'LineWidth', 2);
+h = plot(X, Y, '-', 'Color', color, 'LineWidth', 3);
