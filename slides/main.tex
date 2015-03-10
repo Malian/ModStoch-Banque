@@ -117,7 +117,6 @@ where $D = \{t | A(t)>=S(t) \}$
 \begin{figure}
 \centering
 \input{../report/tex_matlab/table_param.tex}
-\caption{Parameters\label{table:param}}
 \end{figure}
 \end{frame}
 
@@ -125,12 +124,14 @@ where $D = \{t | A(t)>=S(t) \}$
 \frametitle{Results : who gets fired?}
 \begin{figure}
 \centering
-\subfigure[lundi pm]{
-\includegraphics[width = 5cm]{half\string_daylundi\string_pm\string_clients\string_served.eps}
+\subfigure[Monday pm]{
+\includegraphics[width = 0.48\textwidth]{half\string_daylundi\string_pm\string_clients\string_served.eps}
 }
-\subfigure[vendredi am]{
-\includegraphics[width = 5cm]{half\string_dayvendredi\string_am\string_clients\string_served.eps}
+\subfigure[Friday am]{
+\includegraphics[width = 0.48\textwidth]{half\string_dayvendredi\string_am\string_clients\string_served.eps}
 }
+
+\caption{Cumulative number of client served.}
 \end{figure}
 \begin{center}
 $N_t = $ \input{../report/tex_matlab/tellers.tex}
