@@ -39,12 +39,13 @@ end
 % Linear interpolation
 time = linspace(0,tstart(end),nSAMPLES);
 CA = zeros(hd,nSAMPLES);
+h = createFigure('', '$t(s)$', 'number of client')
 for hd = 1:nHalfDays
 	CA(hd,:) = interp1(tstart,CA_points(hd,:),time);
 	%% Plot
-	plot(time,CA(hd,:),'linewidth',2);hold on;
+	createPlot(h, time, CA(hd,:));
 end
-legend('1','2','3','4','5');
+legend('Monday pm','Tuesday pm', 'Wednesday am', 'Wednesday pm', 'Friday am');
 print('../report/images/lambdaApprox.eps','-depsc');
 
 %% Produce files
