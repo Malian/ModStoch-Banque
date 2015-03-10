@@ -39,7 +39,7 @@ end
 % Linear interpolation
 time = linspace(0,tstart(end),nSAMPLES);
 CA = zeros(hd,nSAMPLES);
-h = createFigure('', '$t(s)$', 'number of client')
+h = createFigure('', '$t(s)$', 'number of client');
 for hd = 1:nHalfDays
 	CA(hd,:) = interp1(tstart,CA_points(hd,:),time);
 	%% Plot
